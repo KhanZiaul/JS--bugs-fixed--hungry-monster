@@ -1,4 +1,3 @@
-
 //------------- handle search button-----------
 const searchFood = () => {
     const searchField = document.getElementById('mealInput'); 
@@ -11,7 +10,9 @@ const searchFood = () => {
 
 const displayMealInfo = mealData => {
     const mealContainer = document.getElementById('mealCard');
-    mealData.forEach(item => {
+
+    console.log(mealData)
+    mealData.meals.forEach(item => {
         const foodItemName = document.createElement('div');
         foodItemName.className = 'meal-items';
         itemPosition = item.idMeal;
