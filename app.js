@@ -1,11 +1,21 @@
 //------------- handle search button-----------
 const searchFood = () => {
     const searchField = document.getElementById('mealInput'); 
-    const searchData = searchField.value      
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchData}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displayMealInfo(data))
+    const searchData = searchField.value 
+    if(searchData.length == 0){
+
+        document.getElementById('errorMessage').innerText = `Please Enter Something` ;
+    }
+    
+    else{
+
+        document.getElementById('errorMessage').innerText = '' ;
+
+        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchData}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => displayMealInfo(data))
+    }  
 }
 
 const displayMealInfo = mealData => {
