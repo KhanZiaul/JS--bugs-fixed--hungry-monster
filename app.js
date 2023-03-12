@@ -1,16 +1,16 @@
 //------------- handle search button-----------
+const errorMesage = document.getElementById('errorMessage');
+const mealContainer = document.getElementById('mealCard');
 const searchFood = () => {
     const searchField = document.getElementById('mealInput'); 
     const searchData = searchField.value 
     if(searchData.length == 0){
-
-        document.getElementById('errorMessage').innerText = `Please Enter Something` ;
+    errorMesage.innerText = `Please Enter Something` ;
+    mealContainer.innerHTML = '' ;
     }
-    
+
     else{
-
-        document.getElementById('errorMessage').innerText = '' ;
-
+        errorMesage.innerText = '' ;
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchData}`;
         fetch(url)
         .then(res => res.json())
@@ -19,7 +19,6 @@ const searchFood = () => {
 }
 
 const displayMealInfo = mealData => {
-    const mealContainer = document.getElementById('mealCard');
     document.getElementById('mealCard').innerHTML = '';
     console.log(mealData)
     mealData.meals.forEach(item => {
@@ -52,7 +51,7 @@ fetch(url)
 
 const displayDetails = mealItemDetails => {
     const mealItemsInformation = document.getElementById('mealItemsInfo');
-    mealItemDetails.forEach(items => {
+    mealItemDetails.meals.forEach(items => {
         const mealItemsInformations = document.innerHTML('div');
         mealItemsInformations.className = 'ingredients-info';
         console.log(items.strMeal);
