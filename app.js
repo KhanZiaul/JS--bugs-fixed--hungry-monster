@@ -10,7 +10,7 @@ const searchFood = () => {
 
 const displayMealInfo = mealData => {
     const mealContainer = document.getElementById('mealCard');
-
+    document.getElementById('mealCard').innerHTML = '';
     console.log(mealData)
     mealData.meals.forEach(item => {
         const foodItemName = document.createElement('div');
